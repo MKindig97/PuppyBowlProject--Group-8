@@ -45,7 +45,11 @@ const addNewPlayer = async (playerObj) => {
 
 const removePlayer = async (playerId) => {
     try {
-
+        const response = await fetch(`${APIURL}/${playerId}`, {
+            method: 'DELETE',
+        });
+        const deletedPlayer = await response.json();
+        return deletedPlayer;
     } catch (err) {
         console.error(
             `Whoops, trouble removing player #${playerId} from the roster!`,
@@ -62,7 +66,7 @@ const removePlayer = async (playerId) => {
  * 
  * It also adds event listeners to the buttons in each player card. 
  * 
- * The event listeners are for the "See details" and "Remove from roster" buttons. 
+ * The event listeners are for the "See details" and "Remove from roaster" buttons. 
  * 
  * The "See details" button calls the `fetchSinglePlayer` function, which makes a fetch request to the
  * API to get the details for a single player. 
@@ -74,6 +78,7 @@ const removePlayer = async (playerId) => {
  * @param playerList - an array of player objects
  * @returns the playerContainerHTML variable.
  */
+
 const renderAllPlayers = (playerList) => {
     try {
         
