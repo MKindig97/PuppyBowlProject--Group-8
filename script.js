@@ -21,7 +21,7 @@ const fetchAllPlayers = async () => {
     }
 };
 
-const fetchSinglePlayer = async (player) => {
+const fetchSinglePlayer = async (player) => { 
     try {
         const response = await fetch(`${APIURL}/${player}`);
         const singlePlayer = await response.json();
